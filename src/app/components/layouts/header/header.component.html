@@ -1,0 +1,89 @@
+<!-- ==================== Start Navbar ==================== -->
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand">
+            <div class="logo" (click)="reload()">
+                <img src="assets/img/logo-dark.png" alt="">
+            </div>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+      </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item" *ngIf="checkLoggedin">
+                    <a class="nav-link" routerLink="/login">
+                      Login
+                  </a>
+                </li>
+                <li class="nav-item" *ngIf="checkLoggedin">
+                    <a class="nav-link" routerLink="/register">
+                    Register
+                </a>
+                </li>
+            </ul>
+            <div class="social" *ngIf="checkName">
+                <ul class="rest">
+                    <!-- <li>
+                        <a>
+                            <p>Sanni Ibrahim</p>
+                        </a>
+                        <a (click)="logout()" nz-tooltip nzTooltipTitle="Logout"><i class="fas fa-sign-out-alt"></i></a>
+                    </li> -->
+
+                    <li class="nav-item dropdown rest">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Sanni Ibrahim <span><i nz-icon nzType="down" nzTheme="outline" class="ml-10"></i></span>
+                      </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" style="margin-left: 0px !important;">Profile</a></li>
+                            <li><a class="dropdown-item" style="margin-left: 0px !important;" (click)="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="social">
+                <ul class="rest">
+                    <li>
+                        <a href="#0"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#0"><i class="fab fa-twitter"></i></a>
+                        <a href="#0"><i class="fab fa-dribbble"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <div class="socialMine" *ngIf="checkName">
+                <ul class="rest">
+                    <li>
+                        <a (click)="requestAccess()" class="butn butn-xsm headerBtn">
+                            <span class="text">Request access to application</span>
+                        </a>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== End Navbar ==================== -->
+
+
+
+<ng-template #accessModal let-modal>
+    <div class="modal-header headerModal">
+        <h4 class="modal-title">
+            <img class="logoModal" src="assets/images/wenpaylogo.png" />
+        </h4>
+        <button type="button" class="closeModal" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+    <div class="hidescroll" style="height: 800px;">
+        <div class="modal-body">
+            <div class="col-md-12 mt-3" style="width: 100%; height: 730px">
+            </div>
+        </div>
+    </div>
+</ng-template>

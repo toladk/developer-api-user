@@ -1,0 +1,176 @@
+<header class="pg-header-sipm gr-purple-light-bg valign">
+    <div class="container mt-100">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="caption text-center">
+                    <span class="fz-14 mb-10 text-u ls4 gr-purple-red-text" *ngIf="showApps">Applications</span>
+                    <span class="fz-14 mb-10 text-u ls4 gr-purple-red-text" *ngIf="showApis">Endpoints</span>
+                    <h1 class="fz-50 fw-600" *ngIf="showApps">List Of Applications</h1>
+                    <h1 class="fz-50 fw-600" *ngIf="showApis">Application Name Goes Here</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="position-re">
+
+
+
+    <section class="blog-grid section-padding pt-3" *ngIf="showApps">
+        <div class="container">
+            <ng-template #indicatorTemplate2><i nz-icon nzType="loading" class="mt-5" style="font-size: 30px; color: #4CAF50;" nzSpin="true"></i></ng-template>
+            <nz-spin simple [nzIndicator]="indicatorTemplate2" [nzSpinning]="isSpinning">
+                <div class="row">
+                    <div class="col-lg-4" *ngFor="let list of applicationList">
+                        <div class="item box-shadow crv mb-30">
+                            <div class="img" style="padding-left: 0px !important; cursor: pointer;" (click)="openModalAccess(accessFields, list.Id)">
+                                <img src="assets/img/blog/b/b1.jpg" alt="">
+
+                                <div class="tags">
+                                    <a href="blog-grid-clean.html" class="gat fz-15 fw-600">{{ list.DisplayName }}</a>
+                                </div>
+                            </div>
+                            <div class="cont">
+                                <div class="title">
+                                    <h5 class="text-center" style="cursor: pointer;">
+                                        <h5 (click)="viewEndpoints()">View Endpoints</h5>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nz-spin>
+        </div>
+    </section>
+
+    <section class="section-padding position-re pt-0 pb-0" *ngIf="showApis">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <nz-collapse>
+                                    <nz-collapse-panel *ngFor="let panel of panels" [nzHeader]="panel.name" [nzActive]="panel.active" [nzDisabled]="panel.disabled">
+                                        <p style="margin:0;">
+                                            A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.
+                                        </p>
+                                    </nz-collapse-panel>
+                                </nz-collapse>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="" style="margin-top: 30px; text-align: center;">
+                                    <a class="butn butn-xsm headerBtn" (click)="viewAppsCheck()">
+                                        <span class="text">View All Applications</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+
+<ng-template #accessFields let-modal>
+    <div class="modal-header headerModal">
+        <h4 class="modal-title">
+            <img class="logoModal" src="assets/img/logo-dark.png" />
+        </h4>
+        <button type="button" class="closeModal" aria-label="Close" (click)="closeModal()">
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="hidescroll" style="height: 650px;">
+        <div class="modal-body">
+            <ng-template #indicatorTemplate12><i nz-icon nzType="loading" class="mt-5" style="font-size: 30px; color: #4CAF50; margin-top: 120px !important;" nzSpin="true"></i></ng-template>
+            <nz-spin simple [nzIndicator]="indicatorTemplate12" [nzSpinning]="isSpinning">
+                <div class="col-md-12" style="width: 100%; height: 600px">
+                    <h6 class="text-center mb-3">-- Request Access to Application --</h6>
+                    <form [formGroup]="accessForm">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="block mb-2">Application Name<span class="text-danger">*</span></label>
+                                <nz-form-item>
+                                    <nz-form-control>
+                                        <nz-input-group nzPrefixIcon="build" nzSize="large">
+                                            <input formControlName="applicationName" nz-input placeholder="Enter Application" />
+                                        </nz-input-group>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="block mb-2">Account No<span class="text-danger">*</span></label>
+                                <nz-form-item>
+                                    <nz-form-control>
+                                        <nz-input-group nzPrefixIcon="field-number" nzSize="large">
+                                            <input formControlName="debitAccount" nz-input placeholder="Enter Account No" />
+                                        </nz-input-group>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="block mb-2">Email<span class="text-danger">*</span></label>
+                                <nz-form-item>
+                                    <nz-form-control>
+                                        <nz-input-group nzPrefixIcon="inbox" nzSize="large">
+                                            <input formControlName="email" nz-input placeholder="Enter Email" />
+                                        </nz-input-group>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="block mb-2">Description<span class="text-danger">*</span></label>
+                                <nz-form-item>
+                                    <nz-form-control>
+                                        <textarea formControlName="description" nz-input rows="3" placeholder="Please enter description here"></textarea>
+                                    </nz-form-control>
+                                </nz-form-item>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label class="block mb-2">isFintech?<span class="text-danger">*</span></label>
+                                <nz-form-item>
+                                    <nz-select nzShowSearch nzAllowClear formControlName="isFintech" class="w-100" nzPlaceHolder="Select is Fintech">
+                                        <nz-option nzLabel="Yes" nzValue="true"></nz-option>
+                                        <nz-option nzLabel="No" nzValue="false"></nz-option>
+                                    </nz-select>
+                                </nz-form-item>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <label class="block mb-2">Select Application?<span class="text-danger">*</span></label>
+                                <nz-form-item>
+                                    <nz-select nzShowSearch nzAllowClear formControlName="allowedScopes" nzMode="multiple" class="w-100" nzPlaceHolder="Select is Fintech">
+                                        <nz-option nzLabel="Yes" nzValue="true"></nz-option>
+                                        <nz-option nzLabel="No" nzValue="false"></nz-option>
+                                    </nz-select>
+                                </nz-form-item>
+                            </div>
+                        </div>
+                        <div class="row mb-2 mt-2">
+                            <div class="col-md-12">
+                                <a class="butn butn-xsm w-100 headerBtn">
+                                    <span class="text">Submit</span>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </nz-spin>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,37 @@
+.pg-header-sipmEdited {
+    min-height: 40vh;
+    padding: 80px 0;
+}
+
+.headerBtn {
+    border-radius: 50px;
+    padding-top: 0px;
+    background-color: #062748;
+    color: #fff !important;
+    cursor: pointer;
+}
+
+.headerBtn:hover {
+    border-radius: 50px;
+    padding-top: 0px;
+    border: 1px solid #062748;
+    background-color: #fff;
+    color: #062748 !important;
+    cursor: pointer;
+}
+
+.socialMine {
+    padding-left: 20px;
+    margin-left: 20px;
+    position: relative;
+}
+
+.cdk-overlay-container {
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1100 !important;
+}

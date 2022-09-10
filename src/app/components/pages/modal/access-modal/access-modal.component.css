@@ -1,0 +1,33 @@
+.hidescroll {
+    overflow: auto;
+    max-height: 100vh;
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.hidescroll::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+}
+
+.closeModal {
+    background-color: #060E1C;
+    color: #FFFFFF;
+    border-radius: 25px;
+    border: 1px solid #060E1C;
+    padding: 3px 10px;
+}
+
+.logoModal {
+    width: 100px;
+    height: 20px;
+}
+
+.headerModal {
+    border-bottom: 1px solid #D4DAE1;
+}
+
+.footerModal {
+    border-top: 1px solid #D4DAE1;
+}
